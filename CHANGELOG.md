@@ -2,6 +2,11 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 3.9.0
+- Debug this run: step through a Playground run, change one step (a tool result or your message) or retry the model's turn, and the agent runs again from there
+- Evals and Skills A/B now have a model dropdown (Ollama shows the models installed on your computer; Other lets you type one)
+- Fixed the Badges page: the certificate name box no longer overlaps its button
+
 ## 3.8.0
 - Lab Evals: import and export CSV, grade with a judge model (alone or with pass rules), and every run is compared with the last one so regressions show up
 - Every download now ships evals.json (the same file the Lab exports) and a GitHub Actions workflow that runs your evals on every push
