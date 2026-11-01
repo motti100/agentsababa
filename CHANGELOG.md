@@ -2,6 +2,9 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 4.1.1
+- Tighter home page: logo and name share one row and the Learn and Build cards sit higher; the sababa dictionary entry opens with a click
+
 ## 4.1.0
 - New name: AgentSababa (formerly LoopRig). Saved work, keys and old blueprints keep working
 - Home page shows a dictionary entry for "sababa"

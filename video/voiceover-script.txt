@@ -1,35 +1,41 @@
-LOOPRIG EXPLAINER v3.6: voiceover script (109 seconds, read at a relaxed pace)
+AGENTSABABA EXPLAINER v4.1: voiceover script (138 seconds, read at a relaxed pace)
 Timestamps are when each paragraph should start. Record it in one take, or one paragraph at a time.
 
 [0:00]
-Everyone is talking about AI agents. Very few people can build a good one without a week of trial and error. I built LoopRig to fix that.
+Everyone is talking about AI agents. Very few people can build a good one without a week of trial and error. I built AgentSababa to fix that.
 
 [0:07]
 Here's the secret: every agent, no matter how fancy, runs the same loop. It reasons about what to do. It acts, by calling a tool. It observes what came back. And it decides: am I done, or do I go around again? Four moves. That's it.
 
 [0:21]
-LoopRig turns that loop into a builder. Pick a proven technique, from a simple tool loop to ReAct, chain of thought, retrieval, routers, or a whole team of agents. Then tune each of the four moves.
+AgentSababa turns that loop into a builder. Pick a proven technique, from a simple tool loop to ReAct, chain of thought, retrieval, routers, or a whole team of agents. Then tune each of the four moves.
 
 [0:33]
 It isn't tied to one vendor. OpenAI, Gemini, Claude, Groq, Mistral, DeepSeek, or a free model on your own laptop.
 
 [0:42]
-New to agents? There's a learning path built in: forty-six short quests in ten worlds. You predict, you run it, and the app checks what you built. Every demo works without a key. It even teaches what to do when an agent goes quiet, gets cut off, or says it's done when it isn't.
+New to agents? There's a learning path built in: forty-eight short quests in ten worlds. You predict, you run it, and the app checks what you built. Every demo works without a key. It teaches what goes wrong too, including prompt injection.
 
 [0:58]
 Then try it, right on the page. Paste your own key; it stays in your browser. Press Run and watch every step: the loop lights up as the agent reasons, acts and observes. Attach a file or an image if the task needs one, and download whatever it builds.
 
 [1:12]
-There's a Project builder too. It plans, writes files, makes precise edits, runs the tests, reads the failures and fixes them. This run on screen is illustrative. On the page it works in a safe, in-memory folder with a JavaScript sandbox. For Python and shell commands, run the generated agent on your own machine, with approval on.
+Something went wrong? Debug this run. Step through everything the model saw, change a tool result or your own message, or retry the model's turn, and the agent runs again from that point. For a team of agents, edit the graph: rename a specialist, reorder a step, add a worker.
 
 [1:26]
-What you get is real Python or TypeScript, with hard limits, retries and approval for risky tools. A doctor command checks your key, your model and tool calling in seconds. And you can hand it files or pictures with dash-dash file and dash-dash image.
+There's a Project builder too. It plans, writes files, makes precise edits, runs the tests, reads the failures and fixes them. This run on screen is illustrative. On the page it works in a safe, in-memory folder with a JavaScript sandbox. For Python and shell commands, run the generated agent on your own machine, with approval on.
 
-[1:39]
-LoopRig. Free, public domain, one file, runs in your browser. Link below. Build something and tell me what you make.
+[1:40]
+Then test it. In the Lab, compare models, run evals with a judge model, and check whether your prompt holds up against common injection tricks. Add guardrails that redact personal data, and share a run with a link.
+
+[1:54]
+What you get is real Python or TypeScript, with hard limits, retries and approval for risky tools. A doctor command checks your key and model in seconds. It can send OpenTelemetry traces, and it ships files to deploy on the edge.
+
+[2:08]
+AgentSababa. Sababa is Israeli slang for "cool, all good." Free, public domain, one file, runs in your browser. Link below. Build something and tell me what you make.
 
 TIPS
 - Pause for a beat at each timestamp so the picture lands first.
-- Say "dash-dash file" slowly; viewers will see the flag on screen.
-- To add the voice: ffmpeg -i looprig-explainer.mp4 -i voice.m4a -c:v copy -c:a aac -shortest looprig-explainer-voiced.mp4
-- To burn in or attach captions: most platforms accept looprig-explainer.srt directly.
+- Say "sababa" as sah-BAH-bah. The page has a dictionary entry if people ask.
+- To add the voice: ffmpeg -i agentsababa-explainer.mp4 -i voice.m4a -c:v copy -c:a aac -shortest agentsababa-explainer-voiced.mp4
+- To burn in or attach captions: most platforms accept agentsababa-explainer.srt directly.
