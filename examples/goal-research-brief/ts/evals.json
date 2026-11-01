@@ -1,0 +1,9 @@
+{
+  "looprigEvals": 1,
+  "cases": [
+    {
+      "task": "What are the main trade-offs between SQLite and Postgres for a small SaaS product?",
+      "expect": ""
+    }
+  ]
+}

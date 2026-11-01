@@ -1,0 +1,9 @@
+{
+  "looprigEvals": 1,
+  "cases": [
+    {
+      "task": "Which month had the highest revenue in sales.csv, and by how much did it beat the average?",
+      "expect": ""
+    }
+  ]
+}

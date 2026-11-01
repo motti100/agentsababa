@@ -1,0 +1,21 @@
+# Runs your evals on every push and pull request.
+# Add ANTHROPIC_API_KEY under Settings > Secrets and variables > Actions.
+# Cases live in evals.json (export them from the LoopRig Lab). Each run costs real tokens, so keep the list short.
+name: evals
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - name: Run evals
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: npx tsx evals.ts

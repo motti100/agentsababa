@@ -1,0 +1,9 @@
+{
+  "looprigEvals": 1,
+  "cases": [
+    {
+      "task": "Review app.py and list the three most serious problems.",
+      "expect": ""
+    }
+  ]
+}

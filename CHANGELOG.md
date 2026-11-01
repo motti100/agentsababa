@@ -2,6 +2,14 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 3.8.0
+- Lab Evals: import and export CSV, grade with a judge model (alone or with pass rules), and every run is compared with the last one so regressions show up
+- Every download now ships evals.json (the same file the Lab exports) and a GitHub Actions workflow that runs your evals on every push
+
+## 3.7.0
+- Playground: Test connection checks your key, model and tool calling with two tiny requests
+- Playground: Cost limit. Enter your model's prices to see an estimated cost live, and stop a run at a dollar amount you choose
+
 ## 3.6.7
 - Lab: Compare models fills Ollama columns with the models you actually have installed
 
