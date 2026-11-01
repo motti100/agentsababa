@@ -2,6 +2,11 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 4.1.0
+- New name: AgentSababa (formerly LoopRig). Saved work, keys and old blueprints keep working
+- Home page shows a dictionary entry for "sababa"
+- Downloaded files now start with agentsababa-
+
 ## 4.0.1
 - Removed the partial Spanish interface; more languages can be added later
 

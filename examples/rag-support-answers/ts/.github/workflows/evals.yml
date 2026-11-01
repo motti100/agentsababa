@@ -1,6 +1,6 @@
 # Runs your evals on every push and pull request.
 # Add ANTHROPIC_API_KEY under Settings > Secrets and variables > Actions.
-# Cases live in evals.json (export them from the LoopRig Lab). Each run costs real tokens, so keep the list short.
+# Cases live in evals.json (export them from the AgentSababa Lab). Each run costs real tokens, so keep the list short.
 name: evals
 on:
   push:

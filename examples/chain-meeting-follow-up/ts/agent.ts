@@ -2,7 +2,7 @@
  * chain-meeting-follow-up
  * Reason: direct | Act: no tools | Observe: raw | Decide: stop when done | Shape: prompt chain
  *
- * Built with LoopRig v4.0.1. Run it:
+ * Built with AgentSababa v4.1.0. Run it:
  *   npm i @anthropic-ai/sdk && npm i -D tsx typescript @types/node
  *   export ANTHROPIC_API_KEY=...
  *   npx tsx agent.ts "your task here"
@@ -165,7 +165,7 @@ async function otelFlush(): Promise<void> {
   const endpoint = (process.env.OTEL_EXPORTER_OTLP_ENDPOINT ?? "").replace(/\/+$/, "");
   if (!endpoint || !OTEL.spans.length) return;
   const root = { traceId: OTEL.trace, spanId: OTEL.root, name: "agent.run", kind: 1, startTimeUnixNano: String(OTEL.t0), endTimeUnixNano: String(nowNs()), attributes: [otelAttr("agent.tokens", usedTokens())] };
-  const body = { resourceSpans: [{ resource: { attributes: [otelAttr("service.name", process.env.OTEL_SERVICE_NAME ?? "chain-meeting-follow-up")] }, scopeSpans: [{ scope: { name: "looprig" }, spans: [root, ...OTEL.spans] }] }] };
+  const body = { resourceSpans: [{ resource: { attributes: [otelAttr("service.name", process.env.OTEL_SERVICE_NAME ?? "chain-meeting-follow-up")] }, scopeSpans: [{ scope: { name: "agentsababa" }, spans: [root, ...OTEL.spans] }] }] };
   const headers: Record<string, string> = { "Content-Type": "application/json" };
   for (const pair of (process.env.OTEL_EXPORTER_OTLP_HEADERS ?? "").split(",")) { const i = pair.indexOf("="); if (i > 0) headers[pair.slice(0, i).trim()] = pair.slice(i + 1).trim(); }
   OTEL.spans = [];

@@ -1,7 +1,7 @@
 """goal-research-brief as an MCP server
 Reason: plan first | Act: read_file, write_file, run_python | Observe: log | Decide: stop when done | Shape: goal mode
 
-Exported by LoopRig. It offers this agent's tools to any MCP client (Claude Desktop, Claude Code, Cursor and others),
+Exported by AgentSababa. It offers this agent's tools to any MCP client (Claude Desktop, Claude Code, Cursor and others),
 plus ask_agent, which runs the whole agent from agent.py.
 
   pip install mcp

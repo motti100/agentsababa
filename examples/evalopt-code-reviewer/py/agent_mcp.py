@@ -1,7 +1,7 @@
 """evalopt-code-reviewer as an MCP server
 Reason: direct | Act: read_file | Observe: raw | Decide: evaluate >= 8 | Shape: single agent
 
-Exported by LoopRig. It offers this agent's tools to any MCP client (Claude Desktop, Claude Code, Cursor and others),
+Exported by AgentSababa. It offers this agent's tools to any MCP client (Claude Desktop, Claude Code, Cursor and others),
 plus ask_agent, which runs the whole agent from agent.py.
 
   pip install mcp

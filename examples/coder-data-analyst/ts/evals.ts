@@ -1,4 +1,4 @@
-// Tests for coder-data-analyst. Put cases in evals.json (export them from the LoopRig Lab) or edit CASES, then run:  npx tsx evals.ts
+// Tests for coder-data-analyst. Put cases in evals.json (export them from the AgentSababa Lab) or edit CASES, then run:  npx tsx evals.ts
 
 import { existsSync, readFileSync } from "node:fs";
 import { run, usedTokens } from "./agent";
@@ -14,7 +14,7 @@ let CASES: Case[] = [
 ];
 
 // evals.json: {"cases": [{"task": "...", "expect": "text the answer must contain, or /regex/i, one rule per line"}]}
-// This is the same format the LoopRig Lab exports, so the cases you tuned there run here and in CI.
+// This is the same format the AgentSababa Lab exports, so the cases you tuned there run here and in CI.
 if (existsSync("evals.json")) {
   const data = JSON.parse(readFileSync("evals.json", "utf8"));
   const list: { task?: string; expect?: string }[] = Array.isArray(data) ? data : data.cases;

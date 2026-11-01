@@ -1,4 +1,4 @@
-"""Tests for evalopt-code-reviewer. Put cases in evals.json (export them from the LoopRig Lab) or edit CASES, then run:  python evals.py"""
+"""Tests for evalopt-code-reviewer. Put cases in evals.json (export them from the AgentSababa Lab) or edit CASES, then run:  python evals.py"""
 
 import importlib.util
 import json
@@ -21,7 +21,7 @@ CASES = [
 ]
 
 # evals.json: {"cases": [{"task": "...", "expect": "text the answer must contain, or /regex/i, one rule per line"}]}
-# This is the same format the LoopRig Lab exports, so the cases you tuned there run here and in CI.
+# This is the same format the AgentSababa Lab exports, so the cases you tuned there run here and in CI.
 if os.path.exists("evals.json"):
     with open("evals.json") as fh:
         data = json.load(fh)

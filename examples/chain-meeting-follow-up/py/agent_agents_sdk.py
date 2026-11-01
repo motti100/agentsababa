@@ -1,8 +1,8 @@
 """chain-meeting-follow-up (OpenAI Agents SDK version)
 Reason: direct | Act: no tools | Observe: raw | Decide: stop when done | Shape: prompt chain
 
-Exported by LoopRig. This keeps your model, system prompt, tools, approval setting and turn limit,
-and hands the loop itself to the OpenAI Agents SDK. LoopRig-only techniques (tree of thoughts,
+Exported by AgentSababa. This keeps your model, system prompt, tools, approval setting and turn limit,
+and hands the loop itself to the OpenAI Agents SDK. AgentSababa-only techniques (tree of thoughts,
 reflection, team shapes, MCP, structured output) are not carried over: use the main agent file for those.
 
   pip install "openai-agents[litellm]"

@@ -1,7 +1,7 @@
 """react-research-brief as an MCP server
 Reason: ReAct | Act: web_search, fetch_url | Observe: raw | Decide: stop when done | Shape: single agent
 
-Exported by LoopRig. It offers this agent's tools to any MCP client (Claude Desktop, Claude Code, Cursor and others),
+Exported by AgentSababa. It offers this agent's tools to any MCP client (Claude Desktop, Claude Code, Cursor and others),
 plus ask_agent, which runs the whole agent from agent.py.
 
   pip install mcp

@@ -1,7 +1,7 @@
 """rag-support-answers
 Reason: ReAct | Act: search_docs | Observe: compress | Decide: ground | Shape: single agent
 
-Built with LoopRig v4.0.1. Run it:
+Built with AgentSababa v4.1.0. Run it:
 
     pip install anthropic
     export ANTHROPIC_API_KEY=...
@@ -242,7 +242,7 @@ def otel_flush():
     if not endpoint or not _OTEL["spans"]:
         return
     root = {"traceId": _OTEL["trace"], "spanId": _OTEL["root"], "name": "agent.run", "kind": 1, "startTimeUnixNano": str(_OTEL["t0"]), "endTimeUnixNano": str(time.time_ns()), "attributes": [_otel_attr("agent.tokens", used_tokens())]}
-    body = {"resourceSpans": [{"resource": {"attributes": [_otel_attr("service.name", os.environ.get("OTEL_SERVICE_NAME", "rag-support-answers"))]}, "scopeSpans": [{"scope": {"name": "looprig"}, "spans": [root] + _OTEL["spans"]}]}]}
+    body = {"resourceSpans": [{"resource": {"attributes": [_otel_attr("service.name", os.environ.get("OTEL_SERVICE_NAME", "rag-support-answers"))]}, "scopeSpans": [{"scope": {"name": "agentsababa"}, "spans": [root] + _OTEL["spans"]}]}]}
     headers = {"Content-Type": "application/json"}
     for pair in os.environ.get("OTEL_EXPORTER_OTLP_HEADERS", "").split(","):
         if "=" in pair:
