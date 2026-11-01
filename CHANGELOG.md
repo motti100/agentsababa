@@ -2,6 +2,28 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 4.0.1
+- Removed the partial Spanish interface; more languages can be added later
+
+## 4.0.0
+- Guardrails: redact personal data and check replies, with a generated guardrails module in the project download
+- Safety tab in the Lab: prompt-injection smoke tests for your model
+- Classroom tab: run a set of exercises for a group and collect results
+- Share a gallery agent with a link
+- OpenTelemetry export in generated Python and TypeScript agents
+- Edge deploy files (Cloudflare Worker, Vercel, Deno) in the project download
+- Two red-team quests: 48 quests in total
+
+- Accessibility pass: contrast, labels and keyboard access fixed and checked with axe-core in light and dark
+- Evals and Skills pick models from a dropdown; Badges layout fixed
+
+## 3.10.0
+- Visual graph editor: click a specialist, step, worker or team member to rename it, edit it, reorder it, add or remove nodes (router, chain, parallel, supervisor)
+- Blueprint format 2: the team is saved as named nodes you can read and edit by hand. Old blueprints (format 1 and Loopsmith) still load, and format 2 files still open in older LoopRig
+- Playground can use remote MCP servers over HTTP, and asks before each tool call
+- Playground shows replies as they arrive (switch it off under Streaming and MCP tools)
+- Knowledge search now ranks passages with BM25 instead of counting words
+
 ## 3.9.0
 - Debug this run: step through a Playground run, change one step (a tool result or your message) or retry the model's turn, and the agent runs again from there
 - Evals and Skills A/B now have a model dropdown (Ollama shows the models installed on your computer; Other lets you type one)

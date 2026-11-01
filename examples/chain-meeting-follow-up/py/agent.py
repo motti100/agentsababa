@@ -1,7 +1,7 @@
 """chain-meeting-follow-up
 Reason: direct | Act: no tools | Observe: raw | Decide: stop when done | Shape: prompt chain
 
-Built with LoopRig v3.9.0. Run it:
+Built with LoopRig v4.0.1. Run it:
 
     pip install anthropic
     export ANTHROPIC_API_KEY=...
@@ -163,10 +163,62 @@ def explain(e):
     return RuntimeError(f"model call failed: {type(e).__name__}: {e}{where}\n  provider={PROVIDER} model={MODEL}\n  provider said: {body or '(nothing)'}\n  next step: {hint(e)}")
 
 
+_OTEL = {"trace": None, "root": None, "t0": None, "spans": [], "warned": False}
+
+
+def _otel_attr(k, v):
+    if isinstance(v, bool):
+        return {"key": k, "value": {"boolValue": v}}
+    if isinstance(v, int):
+        return {"key": k, "value": {"intValue": str(v)}}
+    return {"key": k, "value": {"stringValue": v if isinstance(v, str) else json.dumps(v, default=str)[:2000]}}
+
+
+def _otel_add(kind, data):
+    """Optional: set OTEL_EXPORTER_OTLP_ENDPOINT (for example http://localhost:4318) to send each event as an OpenTelemetry span."""
+    import os
+    import random
+    import time
+    if not os.environ.get("OTEL_EXPORTER_OTLP_ENDPOINT"):
+        return
+    if _OTEL["trace"] is None:
+        _OTEL["trace"] = "%032x" % random.getrandbits(128)
+        _OTEL["root"] = "%016x" % random.getrandbits(64)
+        _OTEL["t0"] = time.time_ns()
+    now = time.time_ns()
+    attrs = [_otel_attr("agent.event", kind), _otel_attr("agent.tokens", used_tokens())] + [_otel_attr("agent." + k, v) for k, v in data.items()]
+    _OTEL["spans"].append({"traceId": _OTEL["trace"], "spanId": "%016x" % random.getrandbits(64), "parentSpanId": _OTEL["root"], "name": "agent." + kind, "kind": 1, "startTimeUnixNano": str(now), "endTimeUnixNano": str(now), "attributes": attrs})
+
+
+def otel_flush():
+    """Send the collected spans (plus one root span for the whole run). Never raises: telemetry must not break the agent."""
+    import os
+    import time
+    import urllib.request
+    endpoint = os.environ.get("OTEL_EXPORTER_OTLP_ENDPOINT", "").rstrip("/")
+    if not endpoint or not _OTEL["spans"]:
+        return
+    root = {"traceId": _OTEL["trace"], "spanId": _OTEL["root"], "name": "agent.run", "kind": 1, "startTimeUnixNano": str(_OTEL["t0"]), "endTimeUnixNano": str(time.time_ns()), "attributes": [_otel_attr("agent.tokens", used_tokens())]}
+    body = {"resourceSpans": [{"resource": {"attributes": [_otel_attr("service.name", os.environ.get("OTEL_SERVICE_NAME", "chain-meeting-follow-up"))]}, "scopeSpans": [{"scope": {"name": "looprig"}, "spans": [root] + _OTEL["spans"]}]}]}
+    headers = {"Content-Type": "application/json"}
+    for pair in os.environ.get("OTEL_EXPORTER_OTLP_HEADERS", "").split(","):
+        if "=" in pair:
+            k, v = pair.split("=", 1)
+            headers[k.strip()] = v.strip()
+    _OTEL["spans"] = []
+    try:
+        urllib.request.urlopen(urllib.request.Request(endpoint + "/v1/traces", data=json.dumps(body).encode(), headers=headers), timeout=3).read()
+    except Exception as e:
+        if not _OTEL["warned"]:
+            _OTEL["warned"] = True
+            print(f"[otel] could not send spans to {endpoint}: {e}", file=sys.stderr)
+
+
 def trace(kind, **data):
     """Append one event to trace.jsonl so every run can be replayed and audited."""
     with open(TRACE_FILE, "a", encoding="utf-8") as f:
         f.write(json.dumps({"kind": kind, "tokens": used_tokens(), **data}, default=str) + "\n")
+    _otel_add(kind, data)
 
 
 def chat(system, messages, tools=None, think=False):
@@ -368,3 +420,4 @@ if __name__ == "__main__":
             raise
         sys.exit(f"\nERROR: {e}")
     print(f"\n[tokens used: {used_tokens()}]")
+    otel_flush()

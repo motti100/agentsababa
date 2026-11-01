@@ -2,7 +2,7 @@
  * rag-support-answers
  * Reason: ReAct | Act: search_docs | Observe: compress | Decide: ground | Shape: single agent
  *
- * Built with LoopRig v3.9.0. Run it:
+ * Built with LoopRig v4.0.1. Run it:
  *   npm i @anthropic-ai/sdk && npm i -D tsx typescript @types/node
  *   export ANTHROPIC_API_KEY=...
  *   npx tsx agent.ts "your task here"
@@ -192,8 +192,43 @@ async function ask(question: string): Promise<string> {
 }
 
 /** Append one event to trace.jsonl so every run can be replayed and audited. */
+const OTEL = { trace: "", root: "", t0: 0n, spans: [] as any[], warned: false };
+const otelHex = (n: number) => Array.from({ length: n }, () => Math.floor(Math.random() * 16).toString(16)).join("");
+const otelAttr = (k: string, v: unknown) =>
+  typeof v === "boolean" ? { key: k, value: { boolValue: v } }
+  : typeof v === "number" && Number.isInteger(v) ? { key: k, value: { intValue: String(v) } }
+  : { key: k, value: { stringValue: typeof v === "string" ? v : (JSON.stringify(v) ?? "").slice(0, 2000) } };
+const nowNs = () => BigInt(Date.now()) * 1000000n;
+
+/** Optional: set OTEL_EXPORTER_OTLP_ENDPOINT (for example http://localhost:4318) to send each event as an OpenTelemetry span. */
+function otelAdd(kind: string, data: Record<string, unknown>) {
+  if (!process.env.OTEL_EXPORTER_OTLP_ENDPOINT) return;
+  if (!OTEL.trace) { OTEL.trace = otelHex(32); OTEL.root = otelHex(16); OTEL.t0 = nowNs(); }
+  const now = String(nowNs());
+  OTEL.spans.push({ traceId: OTEL.trace, spanId: otelHex(16), parentSpanId: OTEL.root, name: "agent." + kind, kind: 1, startTimeUnixNano: now, endTimeUnixNano: now,
+    attributes: [otelAttr("agent.event", kind), otelAttr("agent.tokens", usedTokens()), ...Object.entries(data).map(([k, v]) => otelAttr("agent." + k, v))] });
+}
+
+/** Send the collected spans (plus one root span for the whole run). Never throws: telemetry must not break the agent. */
+async function otelFlush(): Promise<void> {
+  const endpoint = (process.env.OTEL_EXPORTER_OTLP_ENDPOINT ?? "").replace(/\/+$/, "");
+  if (!endpoint || !OTEL.spans.length) return;
+  const root = { traceId: OTEL.trace, spanId: OTEL.root, name: "agent.run", kind: 1, startTimeUnixNano: String(OTEL.t0), endTimeUnixNano: String(nowNs()), attributes: [otelAttr("agent.tokens", usedTokens())] };
+  const body = { resourceSpans: [{ resource: { attributes: [otelAttr("service.name", process.env.OTEL_SERVICE_NAME ?? "rag-support-answers")] }, scopeSpans: [{ scope: { name: "looprig" }, spans: [root, ...OTEL.spans] }] }] };
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  for (const pair of (process.env.OTEL_EXPORTER_OTLP_HEADERS ?? "").split(",")) { const i = pair.indexOf("="); if (i > 0) headers[pair.slice(0, i).trim()] = pair.slice(i + 1).trim(); }
+  OTEL.spans = [];
+  try {
+    const res = await fetch(endpoint + "/v1/traces", { method: "POST", headers, body: JSON.stringify(body), signal: AbortSignal.timeout(3000) });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+  } catch (e: any) {
+    if (!OTEL.warned) { OTEL.warned = true; console.error("[otel] could not send spans to " + endpoint + ": " + (e?.message ?? e)); }
+  }
+}
+
 function trace(kind: string, data: Record<string, unknown> = {}) {
   fs.appendFileSync(TRACE_FILE, JSON.stringify({ kind, tokens: usedTokens(), ...data }) + "\n");
+  otelAdd(kind, data);
 }
 
 type Call = { id: string; name: string; args: any; extra?: any };
@@ -425,9 +460,10 @@ if ((process.argv[1] ?? "").endsWith("agent.ts")) {
     let task = parsed.task || "A customer asks how to change the email address on their account.";
     if (parsed.texts.length) task += "\n\n" + parsed.texts.join("\n\n");
     run(task)
-      .then((out) => {
+      .then(async (out) => {
         console.log("\n" + out);
         console.log("\n[tokens used: " + usedTokens() + "]");
+        await otelFlush();
       })
       .catch((e) => {
         if (DEBUG) console.error(e);
