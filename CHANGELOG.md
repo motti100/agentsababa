@@ -2,6 +2,11 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 4.5.0
+- Playground: Open a project folder. Load an existing project (index.html, game.js and so on) so the agent can read and change it; hidden files, node_modules and non-text files are skipped, the file tools are turned on, and Keep improving this project (Refine) appears right away. Run now starts from the opened folder instead of clearing it.
+- When a model tries to fetch a file:/// address, it now gets a clear reply telling it to ask you to attach the files, instead of a dead end.
+- The attach area now says plainly that the agent cannot reach your disk on its own and how to give it your files.
+
 ## 4.4.3
 - Preview: Maximize now really fills the window (it was trapped inside its panel, so the page header covered the Exit button). There is a floating Exit full view (Esc) button, and the preview returns to its place on exit.
 

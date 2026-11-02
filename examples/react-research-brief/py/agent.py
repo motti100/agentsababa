@@ -1,7 +1,7 @@
 """react-research-brief
 Reason: ReAct | Act: web_search, fetch_url | Observe: raw | Decide: stop when done | Shape: single agent
 
-Built with AgentSababa v4.4.3. Run it:
+Built with AgentSababa v4.5.0. Run it:
 
     pip install anthropic
     export ANTHROPIC_API_KEY=...
