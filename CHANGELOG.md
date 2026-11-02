@@ -2,6 +2,9 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 4.4.1
+- Builder: the AI provider and model dropdowns can no longer disagree with the rest of the page (key name, note, Playground). If a browser restores the dropdowns or a tab goes stale, the page now reconciles to what the dropdowns show, and the provider note and key label always refresh.
+
 ## 4.4.0
 - Learning upgrade. Every quest now ends with a fuller takeaway: the idea, where you will see it in real agents, what to try next, and a self-check question with an explanation. All 48 quests have a real hint behind the Stuck button.
 - New Practice model: no key needed. A scripted model that acts like a capable one when your setup is right (tools, prompt, technique) and like a guesser when it is not, so you can do the quests hands-on before you add a real model. The final boss still needs a real model.
