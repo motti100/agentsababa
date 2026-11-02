@@ -2,7 +2,7 @@
 
 Reason: ReAct | Act: search_docs | Observe: compress | Decide: ground | Shape: single agent
 
-Built with [AgentSababa](.) v4.5.0. Provider: Anthropic (Claude), model `claude-sonnet-5-5`.
+Built with [AgentSababa](.) v4.5.1. Provider: Anthropic (Claude), model `claude-sonnet-5-5`.
 
 ## Run it
 

@@ -2,6 +2,9 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 4.5.1
+- Refine now always gives the agent the file tools (List files, Read file, Edit file, Write file, preview), even when only web tools were ticked. Before, a Refine on an agent with only web tools could not read your files, so it tried to fetch file:/// addresses and asked you to attach files you had already added. Attaching text files also turns the file tools on.
+
 ## 4.5.0
 - Playground: Open a project folder. Load an existing project (index.html, game.js and so on) so the agent can read and change it; hidden files, node_modules and non-text files are skipped, the file tools are turned on, and Keep improving this project (Refine) appears right away. Run now starts from the opened folder instead of clearing it.
 - When a model tries to fetch a file:/// address, it now gets a clear reply telling it to ask you to attach the files, instead of a dead end.
