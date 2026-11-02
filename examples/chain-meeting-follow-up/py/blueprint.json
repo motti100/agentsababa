@@ -65,7 +65,7 @@
   "preset": "chain",
   "format": "looprig-blueprint",
   "version": 2,
-  "looprigVersion": "4.1.1",
+  "looprigVersion": "4.2.0",
   "graph": {
     "topology": "chain",
     "field": "steps",

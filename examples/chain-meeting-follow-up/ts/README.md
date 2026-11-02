@@ -2,7 +2,7 @@
 
 Reason: direct | Act: no tools | Observe: raw | Decide: stop when done | Shape: prompt chain
 
-Built with [AgentSababa](.) v4.1.1. Provider: Anthropic (Claude), model `claude-sonnet-5-5`.
+Built with [AgentSababa](.) v4.2.0. Provider: Anthropic (Claude), model `claude-sonnet-5-5`.
 
 ## Run it
 

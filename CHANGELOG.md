@@ -2,6 +2,10 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 4.2.0
+- Quest audit: stricter and fairer checks. 'Make it show its source' now needs a verbatim quote and an honest 'not in the files'; early quests (system prompt, JSON, poem, name) must really do the task; grounding quest rejects invented claims; router quest reports which specialist was chosen; injection defense must say files are data; final build quests reject the unchanged example task.
+- New: a congratulations card after each quest shows what you learned, what you did, and your progress, with a Next quest button.
+
 ## 4.1.1
 - Tighter home page: logo and name share one row and the Learn and Build cards sit higher; the sababa dictionary entry opens with a click
 
