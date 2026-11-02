@@ -2,6 +2,18 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 4.4.0
+- Learning upgrade. Every quest now ends with a fuller takeaway: the idea, where you will see it in real agents, what to try next, and a self-check question with an explanation. All 48 quests have a real hint behind the Stuck button.
+- New Practice model: no key needed. A scripted model that acts like a capable one when your setup is right (tools, prompt, technique) and like a guesser when it is not, so you can do the quests hands-on before you add a real model. The final boss still needs a real model.
+- Boss quests with a technique choice now run fully on a wrong pick and then explain what that technique does and why it does not fit, without naming the answer.
+- Techniques are part of the Before you run checklist (hidden on the boss quests that ask you to choose).
+
+## 4.3.0
+- Coach mode for quests: a live 'Before you run' checklist, a warning before running with something missing, a three-step hint ladder (nudge, fuller hint, 'Set it up for me'), and plain-language diagnosis after a failed run (turn limit, repeated actions, missing tools).
+
+## 4.2.1
+- Boss 'which supplier?': if the agent was not given List files, Read file and Write file, the result now says exactly which tools it had and which to tick, instead of a generic 'Not yet'.
+
 ## 4.2.0
 - Quest audit: stricter and fairer checks. 'Make it show its source' now needs a verbatim quote and an honest 'not in the files'; early quests (system prompt, JSON, poem, name) must really do the task; grounding quest rejects invented claims; router quest reports which specialist was chosen; injection defense must say files are data; final build quests reject the unchanged example task.
 - New: a congratulations card after each quest shows what you learned, what you did, and your progress, with a Next quest button.
