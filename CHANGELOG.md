@@ -2,6 +2,12 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 4.4.3
+- Preview: Maximize now really fills the window (it was trapped inside its panel, so the page header covered the Exit button). There is a floating Exit full view (Esc) button, and the preview returns to its place on exit.
+
+## 4.4.2
+- Playground: when a run ends in chat with no files (for example the model says 'Reply when you are ready for the next file'), a What next panel now appears with a reply box that continues the conversation, plus a one-click 'Turn on Write file and run again'. A build-style task (build me a game) now shows a hint to turn on Write file before you run.
+
 ## 4.4.1
 - Builder: the AI provider and model dropdowns can no longer disagree with the rest of the page (key name, note, Playground). If a browser restores the dropdowns or a tab goes stale, the page now reconciles to what the dropdowns show, and the provider note and key label always refresh.
 

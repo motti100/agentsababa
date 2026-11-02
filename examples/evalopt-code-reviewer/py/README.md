@@ -2,7 +2,7 @@
 
 Reason: direct | Act: read_file | Observe: raw | Decide: evaluate >= 8 | Shape: single agent
 
-Built with [AgentSababa](.) v4.4.1. Provider: Anthropic (Claude), model `claude-sonnet-5-5`.
+Built with [AgentSababa](.) v4.4.3. Provider: Anthropic (Claude), model `claude-sonnet-5-5`.
 
 ## Run it
 
