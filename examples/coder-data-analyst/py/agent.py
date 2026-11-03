@@ -1,7 +1,7 @@
 """coder-data-analyst
 Reason: plan first | Act: calculator, read_file, run_python | Observe: raw | Decide: evaluate >= 8 | Shape: single agent
 
-Built with AgentSababa v4.5.2. Run it:
+Built with AgentSababa v4.5.3. Run it:
 
     pip install anthropic
     export ANTHROPIC_API_KEY=...

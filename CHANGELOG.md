@@ -2,6 +2,9 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 4.5.3
+- Fixed an Anthropic 400 error ("tool_use._json: Extra inputs are not permitted") that could appear after a streamed reply was cut off mid tool call. The half-built call is now cleaned up before it is sent back.
+
 ## 4.5.2
 - The preview now starts games for you: when a page has a canvas it presses the start keys it finds in the page text (Space, Enter, arrows) and reports how much of the canvas is lit afterwards. Before, a game waiting for SPACE looked blank.
 - An agent can no longer finish a canvas page or game without previewing the latest version, or while the canvas is still empty or has JavaScript errors. It is sent back to fix it instead of reporting success.
