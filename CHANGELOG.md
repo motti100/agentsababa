@@ -2,6 +2,10 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 4.5.2
+- The preview now starts games for you: when a page has a canvas it presses the start keys it finds in the page text (Space, Enter, arrows) and reports how much of the canvas is lit afterwards. Before, a game waiting for SPACE looked blank.
+- An agent can no longer finish a canvas page or game without previewing the latest version, or while the canvas is still empty or has JavaScript errors. It is sent back to fix it instead of reporting success.
+
 ## 4.5.1
 - Refine now always gives the agent the file tools (List files, Read file, Edit file, Write file, preview), even when only web tools were ticked. Before, a Refine on an agent with only web tools could not read your files, so it tried to fetch file:/// addresses and asked you to attach files you had already added. Attaching text files also turns the file tools on.
 

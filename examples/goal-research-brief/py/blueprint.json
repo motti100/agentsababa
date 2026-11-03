@@ -69,5 +69,5 @@
   "preset": "goal",
   "format": "looprig-blueprint",
   "version": 2,
-  "looprigVersion": "4.5.1"
+  "looprigVersion": "4.5.2"
 }

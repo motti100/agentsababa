@@ -1,7 +1,7 @@
 """rag-support-answers
 Reason: ReAct | Act: search_docs | Observe: compress | Decide: ground | Shape: single agent
 
-Built with AgentSababa v4.5.1. Run it:
+Built with AgentSababa v4.5.2. Run it:
 
     pip install anthropic
     export ANTHROPIC_API_KEY=...
