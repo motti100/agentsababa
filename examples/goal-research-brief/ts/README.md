@@ -2,7 +2,7 @@
 
 Reason: plan first | Act: read_file, write_file, run_python | Observe: log | Decide: stop when done | Shape: goal mode
 
-Built with [AgentSababa](.) v4.5.9. Provider: Anthropic (Claude), model `claude-sonnet-5-5`.
+Built with [AgentSababa](.) v4.5.10. Provider: Anthropic (Claude), model `claude-sonnet-5-5`.
 
 ## Run it
 

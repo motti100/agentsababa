@@ -2,6 +2,9 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 4.5.10
+- Ollama: if the model name has no tag (for example qwen2.5) and a tagged version is installed (qwen2.5:7b), the app now uses the installed one automatically. If nothing matches, the error lists the models you have installed.
+
 ## 4.5.9
 - A missing Ollama model now tells you the exact command to install it (ollama pull MODEL) and how to list what you have.
 

@@ -1,7 +1,7 @@
 """goal-research-brief
 Reason: plan first | Act: read_file, write_file, run_python | Observe: log | Decide: stop when done | Shape: goal mode
 
-Built with AgentSababa v4.5.9. Run it:
+Built with AgentSababa v4.5.10. Run it:
 
     pip install anthropic
     export ANTHROPIC_API_KEY=...
