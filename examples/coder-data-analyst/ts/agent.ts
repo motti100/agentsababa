@@ -2,7 +2,7 @@
  * coder-data-analyst
  * Reason: plan first | Act: calculator, read_file, run_python | Observe: raw | Decide: evaluate >= 8 | Shape: single agent
  *
- * Built with AgentSababa v4.5.8. Run it:
+ * Built with AgentSababa v4.5.9. Run it:
  *   npm i @anthropic-ai/sdk && npm i -D tsx typescript @types/node
  *   export ANTHROPIC_API_KEY=...
  *   npx tsx agent.ts "your task here"

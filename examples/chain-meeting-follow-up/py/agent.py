@@ -1,7 +1,7 @@
 """chain-meeting-follow-up
 Reason: direct | Act: no tools | Observe: raw | Decide: stop when done | Shape: prompt chain
 
-Built with AgentSababa v4.5.8. Run it:
+Built with AgentSababa v4.5.9. Run it:
 
     pip install anthropic
     export ANTHROPIC_API_KEY=...

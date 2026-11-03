@@ -2,6 +2,9 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 4.5.9
+- A missing Ollama model now tells you the exact command to install it (ollama pull MODEL) and how to list what you have.
+
 ## 4.5.8
 - Decide tab: each option now says in plain words what it does, and shows live what it adds: extra model calls (typical and worst case), a percentage, and dollars once prices are entered. The evaluator is renamed Score and retry and warns that every retry repeats the work.
 
