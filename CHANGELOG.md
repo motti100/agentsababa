@@ -2,6 +2,9 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 4.5.7
+- Anthropic runs now use prompt caching: the system prompt and the newest message are marked, so the part of the conversation that is resent every turn is billed at a tenth of the price. Agent loops with many turns should cost much less.
+
 ## 4.5.6
 - Evaluate (score and retry) now shows the evaluator the files the agent wrote, not only its last message. Before, a run that wrote good files could score 1 because its message was empty.
 - A run that was stopped (budget or turn limit) is no longer sent to the evaluator, and an evaluation stops when the budget is gone. This saved no work before: the retries kept burning tokens on an answer that did not exist.
