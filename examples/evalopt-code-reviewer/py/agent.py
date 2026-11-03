@@ -1,7 +1,7 @@
 """evalopt-code-reviewer
 Reason: direct | Act: read_file | Observe: raw | Decide: evaluate >= 8 | Shape: single agent
 
-Built with AgentSababa v4.5.3. Run it:
+Built with AgentSababa v4.5.5. Run it:
 
     pip install anthropic
     export ANTHROPIC_API_KEY=...

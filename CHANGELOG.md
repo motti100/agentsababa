@@ -2,6 +2,13 @@
 
 LoopRig uses semantic versions: a new major number for breaking changes to blueprints, a minor number for new features, a patch number for fixes.
 
+## 4.5.5
+- Agents that write files are now told up front to keep each file under about 150 lines and split big programs into several files. Before, a long file in one reply was cut off by the output limit and the work was lost.
+
+## 4.5.4
+- Security: a pasted or shared trace replay could put HTML into the token count and run it in the page. Replay text is now always escaped, and a new test attacks the replay box and blueprint loading.
+- Provider replies that are empty, have no choices, or contain empty text blocks no longer break a run or get rejected when sent back. Tool results that are empty or not text are sent as text.
+
 ## 4.5.3
 - Fixed an Anthropic 400 error ("tool_use._json: Extra inputs are not permitted") that could appear after a streamed reply was cut off mid tool call. The half-built call is now cleaned up before it is sent back.
 
